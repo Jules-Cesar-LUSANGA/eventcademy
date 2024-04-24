@@ -13,8 +13,11 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('events', EventController::class);
 
 
-    Route::controller(ProfileController::class)->prefix('profile')->group(function(){
-        Route::get('/', 'edit');
+    Route::controller(ProfileController::class)->prefix('profile')->name('profile.')->group(function(){
+        Route::get('/', 'edit')->name('edit');
+        Route::put('/', 'update')->name('update');
+
+        Route::put('/password', 'updatePassword')->name('update-password');
     });
 
 });

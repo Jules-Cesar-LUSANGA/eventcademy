@@ -42,7 +42,8 @@
     </div>
 
     <div>
-        <span>Publié par</span>
+        <span>Publié par</span> <br>
+        <img src="{{ $event->user->getAvatar() }}" style="border-radius: 50%;" alt="Avatar de l'auteur">
         <strong>{{ $event->user->name }}</strong>
     </div>
 

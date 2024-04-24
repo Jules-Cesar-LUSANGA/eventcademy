@@ -17,6 +17,15 @@
         <hr>
     </header>
     <main>
+
+        @session('error')
+            <p style="color: red;">{{ session('error') }}</p>
+        @endsession
+
+        @session('success')
+            <p style="color: blue;">{{ session('success') }}</p>
+        @endsession
+
         {{ $slot }}
     </main>
 </body>

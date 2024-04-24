@@ -12,3 +12,4 @@
 ## Features
 - Users authentication (register and login)
 - Create, Show, Update and Delete an Event
+- Update user profile
