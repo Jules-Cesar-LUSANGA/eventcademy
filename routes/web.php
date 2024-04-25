@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReservationController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -14,10 +15,18 @@ Route::middleware(['auth'])->group(function () {
 
 
     Route::controller(ProfileController::class)->prefix('profile')->name('profile.')->group(function(){
+        
+        Route::get('/{user}', 'show')->name('show');
+
         Route::get('/', 'edit')->name('edit');
         Route::put('/', 'update')->name('update');
 
         Route::put('/password', 'updatePassword')->name('update-password');
+    });
+
+    Route::controller(ReservationController::class)->prefix('reservations')->name('reservations.')->group(function(){
+        Route::post('/{event}', 'set')->name('set');
+        Route::delete('/{event}', 'unset')->name('unset');
     });
 
 });

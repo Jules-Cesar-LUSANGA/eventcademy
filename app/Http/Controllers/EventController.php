@@ -57,6 +57,9 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
+        // Load all reservations for this event
+        $event->load(['reservations', 'reservations.user']);
+
         return view('events.show', compact('event'));
     }
 

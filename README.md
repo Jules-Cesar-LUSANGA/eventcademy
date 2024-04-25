@@ -12,4 +12,5 @@
 ## Features
 - Users authentication (register and login)
 - Create, Show, Update and Delete an Event
-- Update user profile
+- Update and show user profile
+- Reserve place for an event

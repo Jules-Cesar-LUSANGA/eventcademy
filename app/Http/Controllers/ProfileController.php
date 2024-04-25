@@ -2,12 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
+
+    public function show(User $user)
+    {
+        // Show the edit form or show informations
+        if (auth()->id() == $user->id) {
+            return view('profile.edit');
+        } else {
+            return view('profile.show', compact('user'));
+        }
+    }
+
     public function edit()
     {
         return view('profile.edit');

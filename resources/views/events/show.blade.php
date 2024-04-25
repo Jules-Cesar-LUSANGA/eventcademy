@@ -43,8 +43,14 @@
 
     <div>
         <span>Publié par</span> <br>
-        <img src="{{ $event->user->getAvatar() }}" style="border-radius: 50%;" alt="Avatar de l'auteur">
-        <strong>{{ $event->user->name }}</strong>
+
+
+        <a href="{{ route('profile.show', $event->user) }}">
+            <img src="{{ $event->user->getAvatar() }}" style="border-radius: 50%;" alt="Avatar de l'auteur">
+            <strong>{{ $event->user->name }}</strong>
+        </a>
+
+
     </div>
 
     <hr>
@@ -54,5 +60,42 @@
     @else
         <strong>${{ $event->price }}</strong>
     @endif
+
+
+    <div>
+        @if ($event->reservations->first() !== null)
+        
+            <strong>Participants</strong>
+            @foreach ($event->reservations as $reservation)
+                
+                <a href="{{ route('profile.show', $reservation->user) }}">
+                    <img src="{{ $reservation->user->getAvatar() }}" style="border-radius: 50%;" alt="Avatar du participant">
+                </a>
+
+            @endforeach
+        @endif
+
+
+        @if (auth()->id() !== $event->user_id)
+            
+            <hr>
+
+            @if ($event->isReserved())
+                
+                <x-form action="{{ route('reservations.unset', $event) }}" method="delete">
+                    <button type="submit">J'annule</button>
+                </x-form>
+
+            @else
+                
+                <x-form action="{{ route('reservations.set', $event) }}">
+                    <button type="submit">J'y serais</button>
+                </x-form>
+
+            @endif
+
+        @endif
+    </div>
+
 
 </x-auth>
