@@ -11,6 +11,8 @@
                             {{ $event->title }}
                         </a>
                     </h3>
+
+                    <h4>{{ $event->isPassed() }}</h4>
                 </div>
 
             @endforeach

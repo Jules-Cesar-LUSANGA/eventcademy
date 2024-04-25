@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -39,6 +40,22 @@ class Event extends Model
             return true;
         } else {
             return false;
+        }
+    }
+
+    public function isPassed(bool $getBoolVal = false)
+    {
+        // Check if event has been passed
+        
+        $event_date = $this->date;
+        $current_date = date('Y-m-d');
+
+        if ($current_date > $event_date) {
+            return $getBoolVal === false ? "Passé" : true;
+        } elseif ($current_date == $event_date) {
+            return $getBoolVal === false ? "Aujourd'hui" : false;
+        } else {
+            return $getBoolVal === false ? "A venir" : false;
         }
     }
 }

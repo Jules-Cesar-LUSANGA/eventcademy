@@ -13,6 +13,7 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function () {
     Route::resource('events', EventController::class);
 
+    Route::get('my-events', [EventController::class, 'myEvents'])->name('my-events');
 
     Route::controller(ProfileController::class)->prefix('profile')->name('profile.')->group(function(){
         

@@ -17,7 +17,7 @@ class EventController extends Controller
     public function index()
     {
         // Get all events
-        $events = Event::all();
+        $events = Event::orderBy('date', 'desc')->get();
 
         return view('events.index',  compact('events'));
     }
@@ -94,7 +94,6 @@ class EventController extends Controller
 
         }
 
-
         // Update event
         $event->update($data);
 
@@ -115,5 +114,12 @@ class EventController extends Controller
 
         // Redirect to index
         return to_route('events.index')->with('success', "L'évènement a été supprimé");
+    }
+
+    public function myEvents()
+    {
+        $events = auth()->user()->events()->orderBy('date', 'desc')->get();
+
+        return view('events.index', compact('events'));
     }
 }

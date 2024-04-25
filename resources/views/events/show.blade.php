@@ -1,5 +1,7 @@
 <x-auth>
 
+    <strong>{{ $event->isPassed() }}</strong>
+
     <img src="{{ $event->getCover() }}" alt="Event cover" width="300">
 
     <h2>{{ $event->title }}</h2>
@@ -76,7 +78,7 @@
         @endif
 
 
-        @if (auth()->id() !== $event->user_id)
+        @if (auth()->id() !== $event->user_id and $event->isPassed(getBoolVal:true) == false)
             
             <hr>
 
