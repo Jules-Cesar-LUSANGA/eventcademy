@@ -5,18 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ config('app.name') }}</title>
+    @vite('resources/css/app.css')
 </head>
-<body>
-    <main>
-
-        <h2>{{ config('app.name') }}</h2>
-
-        @session('error')
-            <div style="color: red;">
-                {{ session('error') }}
-            </div>
-        @endsession
-        
+<body style="background-color: #edf5f6de">
+    <main>        
         {{ $slot }}
     </main>
 </body>

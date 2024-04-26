@@ -1,10 +1,12 @@
-<x-guest>
-    <x-form action="{{ route('login') }}">
+<x-auth-form action="{{ route('login') }}" linkText="Créer un nouveau compte" linkRoute="{{ route('register') }}">
 
-        <x-input-with-label name="email" type="email" text="Votre e-mail" />
-        <x-input-with-label name="password" type="password" text="Mot de passe" />
+    <h1 class="font-bold text-2xl">Se connecter</h1>
 
-        <button type="submit">Se connecter</button>
-        <a href="{{ route('register') }}">Créer un nouveau compte</a>
-    </x-form>
-</x-guest>
+    <p class="my-2">Connectez-vous à votre compte pour voir les évènements</p>
+
+    <x-input-with-label name="email" type="email" text="Votre e-mail" />
+    <x-input-with-label name="password" type="password" text="Mot de passe" />
+    
+    <x-primary-button>Se connecter</x-primary-button>
+    
+</x-auth-form>
