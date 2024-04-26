@@ -6,7 +6,7 @@
 
     <h2>{{ $event->title }}</h2>
 
-    @if (auth()->id() === $event->user_id)
+    @if (auth()->id() === $event->user_id and $event->isPassed(getBoolVal:true) == false)
         <a href="{{ route('events.edit', $event) }}">Editer</a>
 
         <x-form action="{{ route('events.destroy', $event) }}" method="delete">

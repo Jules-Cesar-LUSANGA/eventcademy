@@ -120,6 +120,6 @@ class EventController extends Controller
     {
         $events = auth()->user()->events()->orderBy('date', 'desc')->get();
 
-        return view('events.index', compact('events'));
+        return view('events.mine', compact('events'));
     }
 }

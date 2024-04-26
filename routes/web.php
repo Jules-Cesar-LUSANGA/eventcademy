@@ -26,6 +26,9 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::controller(ReservationController::class)->prefix('reservations')->name('reservations.')->group(function(){
+        
+        Route::get('', 'agenda')->name('agenda');
+
         Route::post('/{event}', 'set')->name('set');
         Route::delete('/{event}', 'unset')->name('unset');
     });

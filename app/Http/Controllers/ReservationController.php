@@ -27,4 +27,20 @@ class ReservationController extends Controller
 
         return back()->with('success', 'Votre réservatio a été rétirée');
     }
+
+    public function agenda()
+    {
+        // Get reserved events
+        $reservations = Reservation::with('event')->where('user_id', auth()->id())->get();
+
+        // We get only the reserved events without the relationship
+        $events = collect();
+
+        foreach ($reservations as $reservation) {
+            $events->push($reservation->event);
+        }
+
+        // We will pass this events to event-list component
+        return view('events.agenda', compact('events'));
+    }
 }

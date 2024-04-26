@@ -16,3 +16,4 @@
 - Update and show user profile
 - Reserve place for an event, if event is upcomming
 - Get user events
+- Get reserved events
