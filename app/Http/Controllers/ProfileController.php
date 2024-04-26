@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Profile\UpdatePasswordRequest;
+use App\Http\Requests\Profile\UpdateProfileRequest;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
@@ -25,16 +26,10 @@ class ProfileController extends Controller
         return view('profile.edit');
     }
 
-    public function update(Request $request)
+    public function update(UpdateProfileRequest $request)
     {
-        $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|email|string',
-            'avatar' => 'nullable|image',            
-        ]);
-
         // Get all validated data
-        $data = $request->only('name', 'email');
+        $data = $request->validated();
         
         // Check if a new avatar is given
 
@@ -56,15 +51,9 @@ class ProfileController extends Controller
         return back()->with('success', 'Informations modifiées');
     }
 
-    public function updatePassword(Request $request)
+    public function updatePassword(UpdatePasswordRequest $request)
     {
-        $request->validate([
-            'current_password' => 'required|string',
-            'new_password' => 'required|string',        
-        ]);
-
         // Check if current_password is correct
-
         if (Hash::check($request->input('current_password'), auth()->user()->password)) {
             
             // Update user password

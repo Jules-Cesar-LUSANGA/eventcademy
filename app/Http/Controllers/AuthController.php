@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Auth\LoginRequest;
+use App\Http\Requests\Auth\RegisterRequest;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -15,14 +17,9 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-    public function setLoged(Request $request)
+    public function setLoged(LoginRequest $request)
     {
-        $request->validate([
-            'email' => 'required|email|string',
-            'password' => 'required|string'
-        ]);
-
-        if (Auth::attempt($request->only(['email', 'password']))) {
+        if (Auth::attempt($request->validated())) {
             return to_route('events.index');
         } else {
             return back()->with('error', 'Login failed');
@@ -34,21 +31,14 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
-    public function store(Request $request)
+    public function store(RegisterRequest $request)
     {
-        $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|email|string',
-            'password' => 'required|string|min:6'
+        // Create user with validated data
+        $user = User::create([
+            'name'      => $request->input('name'),
+            'email'     => $request->input('email'),
+            'password'  => Hash::make($request->input('password'))
         ]);
-
-        $user = new User();
-
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->password = Hash::make($request->input('password'));
-
-        $user->save();
         
         event(new Registered($user));
 
