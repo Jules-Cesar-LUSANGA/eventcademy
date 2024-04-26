@@ -5,26 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ config('app.name') }}</title>
-    @vite('resources/css/app.css')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
     <header>
-        <h1>EventCademy</h1>
-
-        <nav>
-            <a href="{{ route('events.index') }}">Evènements</a>
-            <a href="{{ route("my-events") }}">Vos evènements</a>
-            <a href="{{ route("events.create") }}">Publier un evènement</a>
-            <a href="{{ route("reservations.agenda") }}">Agenda</a>
-            <a href="{{ route('profile.edit') }}">Votre profil</a>
-        </nav>
-        <x-form action="{{ route('logout') }}" method="delete">
-            <button type="submit">Logout</button>
-        </x-form>
-
-        <hr>
+        <x-navbar></x-navbar>
     </header>
-    <main>
+    
+    <main class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 py-2">
 
         @session('error')
             <p style="color: red;">{{ session('error') }}</p>

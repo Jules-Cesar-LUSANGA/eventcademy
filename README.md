@@ -1,6 +1,10 @@
 <div>
     <h1 align="center">EventCademy-Web</h1>
     This is the web version of EventCademy Android application.
+    <p>
+        <a href="https://play.google.com/store/apps/details?id=com.yveskalume.eventcademy">Original Android APK Link</a> By
+        <a href="https://github.com/yveskalume">@Yves Kalume</a>
+    </p>
 
 ## Stack (Need of Front-end developers)
 
