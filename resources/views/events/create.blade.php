@@ -8,7 +8,7 @@
         <x-input-with-label name="date" text="Date" type="date" />
         <x-input-with-label name="start_at" text="Début" type="time" />
         <x-input-with-label name="end_at" text="Fin" type="time" />
-        <x-input-with-label name="price" text="Prix" type="number" nullable />
+        <x-input-with-label name="price" text="Prix" type="number" placeholder="Laissez vide si gratuit" nullable />
         <x-input-with-label name="location" text="Adresse" />
         
         <x-textarea-with-label name="description" text="Description de l'évenement" type="number" nullable/>

@@ -8,8 +8,15 @@
 </head>
 <body>
     <header>
-        <h1>EventCademy-Web</h1>
+        <h1>EventCademy</h1>
 
+        <nav>
+            <a href="{{ route('events.index') }}">Evènements</a>
+            <a href="{{ route("my-events") }}">Vos evènements</a>
+            <a href="{{ route("events.create") }}">Publier un evènement</a>
+            <a href="{{ route("reservations.agenda") }}">Agenda</a>
+            <a href="{{ route('profile.edit') }}">Votre profil</a>
+        </nav>
         <x-form action="{{ route('logout') }}" method="delete">
             <button type="submit">Logout</button>
         </x-form>

@@ -9,12 +9,14 @@
 <body>
     <main>
 
+        <h2>{{ config('app.name') }}</h2>
+
         @session('error')
             <div style="color: red;">
                 {{ session('error') }}
             </div>
         @endsession
-
+        
         {{ $slot }}
     </main>
 </body>
