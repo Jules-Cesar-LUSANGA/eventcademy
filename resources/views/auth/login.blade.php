@@ -7,6 +7,6 @@
     <x-input-with-label name="email" type="email" text="Votre e-mail" />
     <x-input-with-label name="password" type="password" text="Mot de passe" />
     
-    <x-primary-button>Se connecter</x-primary-button>
+    <x-primary-button class="w-full">Se connecter</x-primary-button>
     
 </x-auth-form>

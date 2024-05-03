@@ -1,6 +1,6 @@
 @props(['events'])
 
-<div>
+<div class="grid grid-cols-4">
     @if ($events->first() !== null)
         @foreach ($events as $event)
             

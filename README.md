@@ -24,7 +24,7 @@
     <h2>Screenshots</h2>
     <div style="text-align:center;">
         <img src="public/screenshots/1.png" alt="Login and Register forms"><br><br>
-        <img src="public/screenshots/2.png" alt="Image 2"><br><br>
+        <img src="public/screenshots/2.png" alt="Add and Edit event"><br><br>
         <img src="public/screenshots/3.png" alt="Image 3"><br><br>
         <img src="public/screenshots/4.png" alt="Image 4">
     </div>

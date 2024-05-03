@@ -35,6 +35,11 @@ class EventController extends Controller
      */
     public function store(CreateEventRequest $request) : RedirectResponse
     {
+        // Check if submited ends time is bigger than starts time
+        if ($request->end_at <= $request->start_at) {
+            return back()->with('error', "L'heure de la fin doit être supérieure à celle du début");
+        }
+
         // Get all validated data
         $data = $request->validated();
 
