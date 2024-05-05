@@ -13,7 +13,9 @@
                             {{ $event->title }}
                         </a>
                     </div>
-                    <p class="text-gray-700 text-base">{{ $event->isPassed() }}</p>
+                    <p 
+                        class="text-{{ $event->isPassed(getBoolVal:true) ? 'red' : 'gray' }}-500 text-base font-bold"
+                    >{{ $event->isPassed() }}</p>
                 </div>
             </div>
 

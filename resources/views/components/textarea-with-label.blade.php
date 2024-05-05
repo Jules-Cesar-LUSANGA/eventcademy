@@ -13,7 +13,7 @@
     >{{ old($name) ? old($name) : $value }}</textarea>
 
     @error($name)
-        <p class="text-red-500">
+        <p id="message" class="text-red-500 font-bold">
             {{ $message }}
         </p>
     @enderror

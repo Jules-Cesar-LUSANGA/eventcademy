@@ -45,11 +45,11 @@ class Event extends Model
 
     public function isPassed(bool $getBoolVal = false)
     {
-        // Check if event has been passed
-        
+        // Get event date and current system date
         $event_date = $this->date;
         $current_date = date('Y-m-d');
 
+        // Check if event has been passed
         if ($current_date > $event_date) {
             return $getBoolVal === false ? "Passé" : true;
         } elseif ($current_date == $event_date) {

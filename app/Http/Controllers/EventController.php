@@ -37,7 +37,15 @@ class EventController extends Controller
     {
         // Check if submited ends time is bigger than starts time
         if ($request->end_at <= $request->start_at) {
-            return back()->with('error', "L'heure de la fin doit être supérieure à celle du début");
+            return back()->with('error', "L'heure de la fin doit être supérieure à celle du début !");
+        }
+
+        // Check if submited event date is bigger than now
+        if ($request->date < now()) {
+            return back()->with('error', "La date de l'évenèment doit être supérieure à celle actuelle !")
+                        ->onlyInput(
+                            'title', 'date', 'price', 'start_at', 'end_at', 'location', 'description',
+                        );
         }
 
         // Get all validated data

@@ -25,7 +25,17 @@
     <div style="text-align:center;">
         <img src="public/screenshots/1.png" alt="Login and Register forms"><br><br>
         <img src="public/screenshots/2.png" alt="Add and Edit event"><br><br>
-        <img src="public/screenshots/3.png" alt="Image 3"><br><br>
-        <img src="public/screenshots/4.png" alt="Image 4">
+        <img src="public/screenshots/3.png" alt="Event listing and showing"><br><br>
+        <img src="public/screenshots/4.png" alt="User agenda and profile">
     </div>
 </div>
+
+## Installation
+
+1. Download the archive or clone the project using git
+3. Create `.env` file from `.env.example`
+4. Run `composer install` and `npm install`
+4. Run `php key:generate`
+5. Run migrations by executing `php artisan migrate` from the project root directory
+6. Start servers by running commands `php artisan serve` and `npm run dev`
+7. Open in browser http://127.0.0.1:8000
