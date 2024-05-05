@@ -15,7 +15,7 @@ class ReservationController extends Controller
             'user_id'   => auth()->id(),
         ]);
 
-        return back()->with('success', 'Votre réservatio a été placée');
+        return back()->with('success', 'Votre réservation a été placée');
     }
 
     public function unset(Event $event)
@@ -24,7 +24,7 @@ class ReservationController extends Controller
 
         $event->reservations()->where('user_id', auth()->id())->delete();
 
-        return back()->with('success', 'Votre réservatio a été rétirée');
+        return back()->with('success', 'Votre réservation a été rétirée');
     }
 
     public function agenda()

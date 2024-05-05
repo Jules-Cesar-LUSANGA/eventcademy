@@ -15,11 +15,11 @@
     <main class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 py-2">
 
         @session('error')
-            <p style="color: red;">{{ session('error') }}</p>
+            <p style="color: red;" id="message">{{ session('error') }}</p>
         @endsession
 
         @session('success')
-            <p style="color: blue;">{{ session('success') }}</p>
+            <p style="color: blue;" id="message">{{ session('success') }}</p>
         @endsession
 
         {{ $slot }}

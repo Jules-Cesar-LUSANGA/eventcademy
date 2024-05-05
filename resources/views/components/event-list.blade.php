@@ -1,23 +1,25 @@
 @props(['events'])
 
-<div class="grid grid-cols-4">
+<div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
     @if ($events->first() !== null)
         @foreach ($events as $event)
             
-            <div>
-                <img src="{{ $event->getCover() }}" alt="Event cover" width="300">
+            <div class="h-min m-1 mb-3 max-w-sm rounded overflow-hidden shadow-lg">
+                <img src="{{ $event->getCover() }}" alt="Event cover" class="w-full h-72">
 
-                <h3>
-                    <a href="{{ route('events.show', $event) }}">
-                        {{ $event->title }}
-                    </a>
-                </h3>
-
-                <h4>{{ $event->isPassed() }}</h4>
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">
+                        <a href="{{ route('events.show', $event) }}"  class="text-blue-500">
+                            {{ $event->title }}
+                        </a>
+                    </div>
+                    <p class="text-gray-700 text-base">{{ $event->isPassed() }}</p>
+                </div>
             </div>
 
         @endforeach
     @else
-        <p style="color: yellow">Aucun évènement trouvé</p>
+        <p class="text-blue-500">Aucun évènement trouvé</p>
     @endif
 </div>
+

@@ -28,3 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
         mobileMenu.classList.toggle('hidden');
     });
 });
+
+window.setTimeout(function() {
+    document.getElementById('message').remove();
+}, 3000)

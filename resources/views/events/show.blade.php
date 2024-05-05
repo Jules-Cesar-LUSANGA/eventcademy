@@ -1,10 +1,13 @@
 <x-auth>
 
-    <strong>{{ $event->isPassed() }}</strong>
+    <div class="flex justify-center">
+        <img src="{{ $event->getCover() }}" alt="Event cover" class="h-72 w-10/12">
+    </div>
 
-    <img src="{{ $event->getCover() }}" alt="Event cover" width="300">
-
-    <h2>{{ $event->title }}</h2>
+    <h2>
+        <span>{{ $event->title }}</span>
+        <strong> - {{ $event->isPassed() }}</strong>
+    </h2>
 
     @if (auth()->id() === $event->user_id and $event->isPassed(getBoolVal:true) == false)
         <a href="{{ route('events.edit', $event) }}">Editer</a>
@@ -48,7 +51,7 @@
 
 
         <a href="{{ route('profile.show', $event->user) }}">
-            <img src="{{ $event->user->getAvatar() }}" style="border-radius: 50%;" alt="Avatar de l'auteur">
+            <img src="{{ $event->user->getAvatar() }}" class="rounded-full h-24 w-24" alt="Avatar de l'auteur">
             <strong>{{ $event->user->name }}</strong>
         </a>
 
@@ -68,13 +71,14 @@
         @if ($event->reservations->first() !== null)
         
             <strong>Participants</strong>
-            @foreach ($event->reservations as $reservation)
+            <div id="reservations-avatars">
+                @foreach ($event->reservations as $reservation)
                 
-                <a href="{{ route('profile.show', $reservation->user) }}">
-                    <img src="{{ $reservation->user->getAvatar() }}" style="border-radius: 50%;" alt="Avatar du participant">
-                </a>
-
-            @endforeach
+                    <a href="{{ route('profile.show', $reservation->user) }}" class=" inline-block mr-2">
+                        <img src="{{ $reservation->user->getAvatar() }}" class="rounded-full h-24 w-24" alt="Avatar du participant">
+                    </a>
+                @endforeach
+            </div>
         @endif
 
 
@@ -85,13 +89,13 @@
             @if ($event->isReserved())
                 
                 <x-form action="{{ route('reservations.unset', $event) }}" method="delete">
-                    <button type="submit">J'annule</button>
+                    <x-danger-button type="submit">J'annule</x-danger-button>
                 </x-form>
 
             @else
                 
                 <x-form action="{{ route('reservations.set', $event) }}">
-                    <button type="submit">J'y serais</button>
+                    <x-primary-button type="submit">J'y serais</x-primary-button>
                 </x-form>
 
             @endif
